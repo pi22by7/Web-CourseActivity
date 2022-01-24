@@ -96,7 +96,7 @@ span {
   padding: 10px !important;
 }
 
-#sidebar.active .dropdown-toggle::after {
+#sidebar.active::after {
   top: auto;
   bottom: 10px;
   right: 50%;
@@ -145,35 +145,10 @@ a[data-toggle="collapse"] {
   position: relative;
 }
 
-.dropdown-toggle::after {
-  display: block;
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-}
-
 ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
   background: #6d7fcc;
-}
-
-ul.CTAs {
-  padding: 20px;
-}
-
-ul.CTAs a {
-  text-align: center;
-  font-size: 0.9em !important;
-  display: block;
-  border-radius: 5px;
-  margin-bottom: 5px;
-}
-
-a.download {
-  background: #fff;
-  color: #7386d5;
 }
 
 a.article,
@@ -195,14 +170,6 @@ a.article:hover {
     max-width: 80px;
     text-align: center;
     margin-left: -80px !important;
-  }
-  .dropdown-toggle::after {
-    top: auto;
-    bottom: 10px;
-    right: 50%;
-    -webkit-transform: translateX(50%);
-    -ms-transform: translateX(50%);
-    transform: translateX(50%);
   }
   #sidebar.active {
     margin-left: 0 !important;
