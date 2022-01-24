@@ -278,3 +278,8 @@ a.article:hover {
     opacity: 1;
   }
 }
+
+.list-p {
+  left: 20%;
+  width: 50%;
+}

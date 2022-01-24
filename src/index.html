@@ -42,7 +42,8 @@
     ></script>
 
     <script src="App.js"></script>
-
+    <script src="Tab.js"></script>
+    
     <link rel="icon" type="image/x-icon" href="favicon.png" />
   </head>
 
@@ -72,7 +73,7 @@
           <li class="active">
             <a>
               <i class="fas fa-utensils"></i>
-              Add a-la Carte
+              Add à la carte
             </a>
           </li>
           <li>
@@ -106,7 +107,7 @@
       </nav>
 
       <div id="content">
-        test {{5+5}}
+        <h2>Select your à la carte options before checking out: </h2>
         <div class="tab">
           <button
             class="tablinks"
@@ -124,39 +125,70 @@
         </div>
 
         <div id="Toppings" class="tabcontent">
-          <h3>Select your favourite topping:</h3>
+          <h4>Select your favourite topping:</h4>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-            consectetur ex consequatur officiis nulla animi alias, sed ut
-            repellat omnis, numquam hic in at ducimus nihil, quae quibusdam
-            quisquam! Nemo?
-          </p>
+            <div class="list-group">
+              <button type="button" class="list-group-item list-group-item-action active" aria-current="true" ng-click="display()">
+                <img id="foodimg" ng-src="{{image.food}}" />
+                Extra Cheese
+              </button>
+              <button type="button" class="list-group-item list-group-item-action">Paprika</button>
+              <button type="button" class="list-group-item list-group-item-action">Jalapeños</button>
+              <button type="button" class="list-group-item list-group-item-action">Tomatoes</button>
+              <button type="button" class="list-group-item list-group-item-action" disabled>Pineapple</button>
+            </div>
+        </p>
         </div>
 
         <div id="Drinks" class="tabcontent">
-          <h3>Select a drink to go along with the meal:</h3>
+          <h4>Select a drink to go along with the meal:</h4>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
-            consequuntur quisquam incidunt numquam quidem laudantium sint rem
-            quos, dignissimos earum veritatis porro quasi quibusdam vitae amet
-            ratione tenetur culpa nulla!
+            <div class="list-group">
+              <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+                Diet Coke
+              </button>
+              <button type="button" class="list-group-item list-group-item-action">Pepsi</button>
+              <button type="button" class="list-group-item list-group-item-action">7 Up</button>
+              <button type="button" class="list-group-item list-group-item-action">Water</button>
+              <button type="button" class="list-group-item list-group-item-action">Juice</button>
+            </div>
           </p>
         </div>
 
         <div id="Combo" class="tabcontent">
-          <h3>Combo Meals</h3>
+          <h4>Combo Meals</h4>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui nam
-            quasi labore similique aliquid temporibus omnis, eos, voluptates
-            deserunt repellendus assumenda delectus laborum illum provident
-            voluptatibus ipsam eum nisi eius?
+            Combos are not available at the moment. Sorry for the inconvenience.
           </p>
           <p></p>
         </div>
       </div>
+
+      <div ng-repeat="food in foods">
+        
+      </div>
+      
+      <!-- <div ng-controller="picCtrl">
+        <img ng-src="{{image.food}}" />
+      </div> -->
     </div>
 
     <script>
+      $(function(){
+        console.log('ready');
+
+        $('.list-group button').click(function(e) {
+          e.preventDefault()
+
+          $that = $(this);
+
+          $that.parent().find('button').removeClass('active');
+          $that.addClass('active');
+          });
+      })
+    </script>
+    <script>
+
       document.getElementById("defaultOpen").click();
 
       $("#sidebarCollapse").click(function () {
