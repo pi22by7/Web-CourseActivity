@@ -13,7 +13,14 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-messages.min.js"></script>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.2.1/angular-material.min.js"></script>
+    
     <link
       rel="stylesheet"
       href="https://ajax.googleapis.com/ajax/libs/angular_material/1.2.1/angular-material.min.css"
@@ -44,17 +51,10 @@
     <script src="App.js"></script>
     <script src="Tab.js"></script>
     
-    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.png" />
   </head>
 
-  <body ng-app="App">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-aria.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-messages.min.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.2.1/angular-material.min.js"></script>
-
+  <body ng-app="App" ng-controller = "picCtrl" ng-cloak>
     <div class="wrapper">
       <nav id="sidebar">
         <div class="sidebar-header">
@@ -103,10 +103,21 @@
             </a>
           </li>
           <hr />
+          <li class="reg">
+            Registered ©2022 Pi
+          </li>
+          <li class ="reg-a">
+            ©2022
+          </li>
         </ul>
       </nav>
 
       <div id="content">
+        <!-- <div>
+          value: {{pic}} {{visi}} {{item}}
+          <button >test</button>
+        </div> -->
+
         <h2>Select your à la carte options before checking out: </h2>
         <div class="tab">
           <button
@@ -128,13 +139,12 @@
           <h4>Select your favourite topping:</h4>
           <p>
             <div class="list-group">
-              <button type="button" class="list-group-item list-group-item-action active" aria-current="true" ng-click="display()">
-                <img id="foodimg" ng-src="{{image.food}}" />
+              <button type="button" class="list-group-item list-group-item-action active" aria-current="true" ng-click = "item='cheese';show()">
                 Extra Cheese
               </button>
-              <button type="button" class="list-group-item list-group-item-action">Paprika</button>
-              <button type="button" class="list-group-item list-group-item-action">Jalapeños</button>
-              <button type="button" class="list-group-item list-group-item-action">Tomatoes</button>
+              <button type="button" class="list-group-item list-group-item-action" ng-click = "item='paprika';show()">Paprika</button>
+              <button type="button" class="list-group-item list-group-item-action" ng-click = "item='jalapeno';show()" >Jalapeños</button>
+              <button type="button" class="list-group-item list-group-item-action" ng-click = "item='tomatoes';show()">Tomatoes</button>
               <button type="button" class="list-group-item list-group-item-action" disabled>Pineapple</button>
             </div>
         </p>
@@ -162,33 +172,13 @@
           </p>
           <p></p>
         </div>
+        <div class = "preview">
+          <img id="foodimg" ng-src="/assets/{{pic}}" ng-show="visi" ng-cloak /> 
+        </div>
       </div>
-
-      <div ng-repeat="food in foods">
-        
-      </div>
-      
-      <!-- <div ng-controller="picCtrl">
-        <img ng-src="{{image.food}}" />
-      </div> -->
     </div>
 
-    <script>
-      $(function(){
-        console.log('ready');
-
-        $('.list-group button').click(function(e) {
-          e.preventDefault()
-
-          $that = $(this);
-
-          $that.parent().find('button').removeClass('active');
-          $that.addClass('active');
-          });
-      })
-    </script>
-    <script>
-
+    <script>//jquery
       document.getElementById("defaultOpen").click();
 
       $("#sidebarCollapse").click(function () {

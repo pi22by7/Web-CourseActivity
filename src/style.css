@@ -1,4 +1,20 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+/* * {
+  box-sizing: border-box;
+} */
+
+html {
+  font-family: "Poppins", sans-serif;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background: #fafafa;
@@ -51,6 +67,28 @@ span {
 .wrapper {
   display: flex;
   align-items: stretch;
+  /* overflow: auto;
+  position: relative; */
+}
+
+.wrapper::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  display: block;
+  background-image: url("/assets/background.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
 }
 
 #sidebar {
@@ -203,12 +241,16 @@ a.article:hover {
 }
 
 .tab {
+  font-family: "Poppins", sans-serif;
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  color: #fff;
+  background-color: #7386d5;
 }
 
 .tab button {
+  font-family: "Poppins", sans-serif;
+  color: #fff;
   background-color: inherit;
   float: left;
   border: none;
@@ -219,11 +261,12 @@ a.article:hover {
 }
 
 .tab button:hover {
-  background-color: #ddd;
+  color: #fff;
+  background-color: #fff;
 }
 
 .tab button.active {
-  background-color: #ccc;
+  background-color: #5f6da8;
 }
 
 .tabcontent {
@@ -245,8 +288,53 @@ a.article:hover {
     opacity: 1;
   }
 }
-
+/* 
 .list-p {
   left: 20%;
   width: 50%;
+} */
+
+.preview {
+  display: flex;
+  height: 30vh;
+  width: 100vh;
+  align-items: center;
+  margin: auto;
+  margin-top: 5%;
+  padding: 10px;
+  object-fit: cover;
+  overflow: hidden;
+  border: none;
+  /* border-radius: 5px; */
+}
+
+img {
+  display: block;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+}
+
+.reg {
+  text-align: center;
+}
+
+.reg-a {
+  display: none;
+}
+
+#sidebar.active .reg {
+  display: none;
+}
+
+#sidebar.active .reg-a {
+  display: initial;
+  text-align: center;
+}
+
+.list-group-item.active {
+  background-color: #7386d5;
+  border-color: #242941;
+  border-radius: 5px;
 }

@@ -1,5 +1,7 @@
-function openTab(evt, tabName) {
+function openTab(e, tabName) {
   var i, tabcontent, tablinks;
+
+  console.log("changed tab");
 
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
@@ -12,5 +14,17 @@ function openTab(evt, tabName) {
   }
 
   document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
+  e.currentTarget.className += " active";
 }
+
+$(function () {
+  $(".list-group button").click(function (e) {
+    e.preventDefault();
+
+    console.log("changed button");
+    $that = $(this);
+
+    $that.parent().find("button").removeClass("active");
+    $that.addClass("active");
+  });
+});
